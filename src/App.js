@@ -3,7 +3,7 @@ import * as $ from "jquery";
 import { authEndpoint, clientId, redirectUri, scopes } from "./config";
 import hash from "./hash";
 import Player from "./Player";
-import logo from "./logo.svg";
+
 import "./App.css";
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
       is_playing: "Paused",
       progress_ms: 0
     };
-    this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
+    this.getRecommendation = this.getRecommendation.bind(this);
   }
   componentDidMount() {
     // Set token
@@ -33,18 +33,18 @@ class App extends Component {
       this.setState({
         token: _token
       });
-      this.getCurrentlyPlaying(_token);
+      this.getRecommendation(_token);
     }
   }
 
-  getCurrentlyPlaying(token) {
-    // Make a call using the token
-    $.ajax({
-      url: "https://api.spotify.com/v1/me/player",
-      type: "GET",
-      beforeSend: xhr => {
-        xhr.setRequestHeader("Authorization", "Bearer " + token);
-      },
+getCurrentlyPlaying(token) {
+  
+ $.ajax({
+       url: "https://api.spotify.com/v1/me/player",
+       type: "GET",
+       beforeSend: xhr => {
+         xhr.setRequestHeader("Authorization", "Bearer " + token);
+       },
       success: data => {
         this.setState({
           item: data.item,
@@ -55,11 +55,37 @@ class App extends Component {
     });
   }
 
+getRecommendation() {
+   
+    let token = "BQBGSK0RUIeFx9guJbHuk7vNF3ObVbhpTFxbHwIAXfuneVVjeMvZHAhuFDHr-IJDx-WQOQVN2wRyzVXJyNp1agLeuaJNx57rMJ9hQnIPCutc7zOBymVnoBpT8DRnFk9gXZ-LN8XkD4enK05Frll5EQXe0rTydbK1Ai_7fyhAAPjefWSs-K5oMthLSaEXOKTG5sNcBo8-srKpmWLuXehdpgUCnZHlgaBQIHFyUQ_nhA";
+    $.ajax({
+      "url": "https://api.spotify.com/v1/artists?ids=0oSGxfWSnnOXhD2fKuz2Gy,3dBVyJ7JuOMt4GE9607Qin",
+
+      "type": "GET",
+      beforeSend: xhr => {
+        xhr.setRequestHeader("Authorization", "Bearer " + token);
+      },
+      success: data => {
+        console.log(data);
+        this.setState({
+          // item: data.item,
+          ids: "5BvJzeQpmsdsFp4HGUYUEx"
+      
+      
+      
+        })}
+    });
+  }
+
+
+
+
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        
           {!this.state.token && (
             <a
               className="btn btn--loginApp-link"
@@ -68,6 +94,7 @@ class App extends Component {
               )}&response_type=token&show_dialog=true`}
             >
               Login to Spotify
+            ;
             </a>
           )}
           {this.state.token && (
@@ -77,6 +104,8 @@ class App extends Component {
               progress_ms={this.progress_ms}
             />
           )}
+
+          
         </header>
       </div>
     );
