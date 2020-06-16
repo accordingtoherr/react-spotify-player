@@ -22,7 +22,7 @@ class App extends Component {
       is_playing: "Paused",
       progress_ms: 0
     };
-    this.getRecommendation = this.getRecommendation.bind(this);
+    this.getRecommendation= this.getRecommendation.bind(this);
   }
   componentDidMount() {
     // Set token
@@ -35,6 +35,7 @@ class App extends Component {
       });
       this.getRecommendation(_token);
     }
+  
   }
 
 getCurrentlyPlaying(token) {
@@ -69,8 +70,9 @@ getRecommendation() {
         console.log(data);
         this.setState({
           // item: data.item,
+        
           ids: "5BvJzeQpmsdsFp4HGUYUEx"
-      
+        
       
       
         })}
