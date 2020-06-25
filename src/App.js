@@ -33,7 +33,7 @@ class App extends Component {
       this.setState({
         token: _token
       });
-      this.getRecommendation(_token);
+      this.getCurrentlyPlaying(_token);
     }
   
   }
@@ -56,11 +56,11 @@ getCurrentlyPlaying(token) {
     });
   }
 
-getRecommendation() {
+getAnayze() {
    
-    let token = "BQBGSK0RUIeFx9guJbHuk7vNF3ObVbhpTFxbHwIAXfuneVVjeMvZHAhuFDHr-IJDx-WQOQVN2wRyzVXJyNp1agLeuaJNx57rMJ9hQnIPCutc7zOBymVnoBpT8DRnFk9gXZ-LN8XkD4enK05Frll5EQXe0rTydbK1Ai_7fyhAAPjefWSs-K5oMthLSaEXOKTG5sNcBo8-srKpmWLuXehdpgUCnZHlgaBQIHFyUQ_nhA";
+    let token = "BQAHqpJzF-BPQgEhGhj6y0iBAHa5ymL_e6naa97rjGh2OxuUMga12cgypSt8gSqjXgIi_RFE4PF-QmYJ4qhB8OG2eg9it2FC9TWFWwXeSEJZrtwGqt9k2Syc4Vg65_0WUOUvGuRK4elW1hB-_sn4vgU4B6gxBtAsRGDQqlqL4bTR2KtZ2c-RGIuOginxkNe28z8Q69o7xIpTXaScJU0DC1SHUqX5OtK9_Wi_I07pDA";
     $.ajax({
-      "url": "https://api.spotify.com/v1/artists?ids=0oSGxfWSnnOXhD2fKuz2Gy,3dBVyJ7JuOMt4GE9607Qin",
+      "url": "hhttps://api.spotify.com/v1/audio-features/06AKEBrKUckW0KREUWRnvT",
 
       "type": "GET",
       beforeSend: xhr => {
@@ -70,15 +70,14 @@ getRecommendation() {
         console.log(data);
         this.setState({
           // item: data.item,
-        
-          ids: "5BvJzeQpmsdsFp4HGUYUEx"
+        ids:"7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
+         
         
       
       
         })}
     });
   }
-
 
 
 
