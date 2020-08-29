@@ -22,7 +22,7 @@ class App extends Component {
       is_playing: "Paused",
       progress_ms: 0
     };
-    this.getRecommendation= this.getRecommendation.bind(this);
+    this.getCurrentlyPlaying= this.getCurrentlyPlaying.bind(this);
   }
   componentDidMount() {
     // Set token
@@ -53,29 +53,6 @@ getCurrentlyPlaying(token) {
           progress_ms: data.progress_ms
         });
       }
-    });
-  }
-
-getAnayze() {
-   
-    let token = "BQAHqpJzF-BPQgEhGhj6y0iBAHa5ymL_e6naa97rjGh2OxuUMga12cgypSt8gSqjXgIi_RFE4PF-QmYJ4qhB8OG2eg9it2FC9TWFWwXeSEJZrtwGqt9k2Syc4Vg65_0WUOUvGuRK4elW1hB-_sn4vgU4B6gxBtAsRGDQqlqL4bTR2KtZ2c-RGIuOginxkNe28z8Q69o7xIpTXaScJU0DC1SHUqX5OtK9_Wi_I07pDA";
-    $.ajax({
-      "url": "hhttps://api.spotify.com/v1/audio-features/06AKEBrKUckW0KREUWRnvT",
-
-      "type": "GET",
-      beforeSend: xhr => {
-        xhr.setRequestHeader("Authorization", "Bearer " + token);
-      },
-      success: data => {
-        console.log(data);
-        this.setState({
-          // item: data.item,
-        ids:"7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
-         
-        
-      
-      
-        })}
     });
   }
 
